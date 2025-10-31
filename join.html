@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TEAM LGMSC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- External CSS Link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-join">
+
+<header class="site-header">
+  <div class="logo">TEAM <span>LGMSC</span></div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="team.html">Team</a>
+    <a href="join.html" class="active">Join Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+  <!-- JOIN US -->
+    <section id="join" class="join">
+      <div class="join-card">
+        <h2>Join Us</h2>
+        <p class="lead">If you want to join our team, you are most welcome.</p>
+
+        <!-- 🔹 Form ID যোগ করা হয়েছে -->
+        <form class="apply-form" id="joinForm">
+          <label>Full name
+            <input name="name" required placeholder="Your Name">
+          </label>
+
+          <label>Discord name
+            <input name="name" required placeholder="Your Name">
+          </label>
+          
+          <label>Discord user name
+            <input name="name" required placeholder="Your Name">
+          </label>
+
+          <label>Email
+            <input name="email" type="email" required placeholder="your@gamil.com">
+          </label>
+
+          <label>Which role you are want to apply for
+            <select name="Role">
+              <option>Custom</option>
+              <option>Event creator</option>
+              <option>Any programe streamer</option>
+            </select>
+          </label>
+
+          <label>Short bio / Why join?
+            <textarea name="bio" rows="4" required placeholder="Why you'd be a good fit"></textarea>
+          </label>
+
+          <div class="form-row">
+            <button class="btn" type="submit">Apply Now</button>
+            <button class="btn ghost" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+<script>
+document.getElementById("year-3").textContent = new Date().getFullYear();
+
+function handleJoin(e){
+  e.preventDefault();
+  alert("✅ Application submitted successfully!");
+  e.target.reset();
+}
+</script>
+
+</body>
+</html>
+
+ <!-- 🔹 External JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>
