@@ -5,7 +5,7 @@ document.querySelectorAll('[id^="year"]').forEach(el => {
 
 // ========== DISCORD WEBHOOKS ==========
 const webhooks = {
-  join: "https://discord.com/api/webhooks/1435850398622679142/m6zp6Xr8k1vl8MwvAOqJcZNtN3N5mToT3YpMx3m5WIXVqcYXy71p0VlZWUEs38avMRn-https://discord.com/api/webhooks/1433314627042934804/b4aYBaV8jHm4GjNjNCV9FDfV_3Os3AOkJB6r_noN0iDIIZ6U9aXidAaHsDiMIwfBq4Jj",   // Join Us webhook
+  join: "https://discord.com/api/webhooks/1435850398622679142/m6zp6Xr8k1vl8MwvAOqJcZNtN3N5mToT3YpMx3m5WIXVqcYXy71p0VlZWUEs38avMRn-",   // Join Us webhook
   contact: "LINK " // Contact webhook
 };
 
