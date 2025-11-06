@@ -1,0 +1,1110 @@
+/* === Base Styles === */
+:root {
+  --bg1: #0f2027;
+  --bg2: #203a43;
+  --bg3: #2c5364;
+  --accent: #00ffae;
+  --glass: rgba(255, 255, 255, 0.06);
+  --radius: 14px;
+  --text: #e6eef8;
+  --muted: #9da9b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: linear-gradient(120deg, var(--bg1), var(--bg2), var(--bg3));
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Header === */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+}
+.logo span {
+  color: var(--accent);
+}
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 16px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.nav a:hover, .nav a.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* === Home Page === */
+body.page-home {
+  background: linear-gradient(120deg, #021024, #042a2e 50%, #0a1a2b);
+  background-size: 300% 300%;
+  animation: homeGradient 12s ease infinite;
+}
+@keyframes homeGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 28px;
+  align-items:center;
+  padding: 40px;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+.title {
+  font-size: 30px;
+  margin: 0 0 12px;
+  animation: float 6s ease-in-out infinite;
+}
+.title span {
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: float 6s ease-in-out infinite;
+}
+.lead {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 500px;
+}
+.hero-visual img {
+  width: 150%;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-inner label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  animation: fadeInUp 1.2s ease;
+}
+
+.hero-inner input,
+.hero-inner select,
+.hero-inner textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.hero-inner input:focus,
+.hero-inner select:focus,
+.hero-inner textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 255, 174, 0.4);
+}
+
+.hero-inner .form-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.hero-inner .btn {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  color: #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-inner .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 255, 174, 0.3);
+}
+
+.hero-inner .btn.ghost {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.hero-inner .btn.ghost:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Remove underline from buttons */
+.hero-inner a {
+  text-decoration: none;
+}
+
+/* === CTA Button Row (Meet Team + Join Us) === */
+.cta-row {
+  margin-top: 8px; /* আগে default থাকলে বেশি হতে পারে, কমিয়ে দিলে টাইট হবে */
+  display: flex;
+  gap: 10px;
+}
+
+/* মোবাইলেও পাশাপাশি রাখার জন্য */
+@media (max-width: 600px) {
+  .cta-row {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .cta-row .btn {
+    flex: 0 1 auto; /* যাতে পাশাপাশি থাকে */
+    min-width: 120px;
+  }
+}
+
+/* ট্যাবলেট ভিউ */
+@media (min-width: 601px) and (max-width: 992px) {
+  .cta-row {
+    justify-content: center;
+  }
+}
+
+
+//* ==========================
+   TEAM PAGE STYLING (Updated)
+   ========================== */
+
+body.page-team {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: url('/bg.jpg') center/cover fixed no-repeat;
+  backdrop-filter: blur(3px);
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 22px;
+  color: #0ef;
+}
+
+.logo span {
+  color: #fff;
+}
+
+.nav a {
+  color: #bbb;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #0ef;
+}
+
+/* Hero section */
+.team-hero {
+  text-align: center;
+  padding: 70px 20px 40px;
+}
+
+.team-hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  color: #0ef;
+  text-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+.team-hero .sub {
+  color: #ccc;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* owner Section */
+.owner-section {
+  text-align: center;
+  margin: 60px auto;
+}
+
+.owner-section h2 {
+  font-size: 30px;
+  color: rgb(0, 255, 85);
+  margin-bottom: 25px;
+}
+
+.owner-card {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 280px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  transition: all 0.4s ease;
+}
+
+.owner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+.owner-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+.owner-card h4 {
+  margin: 10px 0 5px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.owner-card .role {
+  color: #0ef;
+  font-size: 14px;
+}
+
+.owner-card .blood {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+
+.owner-card .bio {
+  color: #bbb;
+  font-size: 13px;
+}
+
+/* Members Section */
+.members-title {
+  text-align: center;
+  font-size: 24px;
+  color: #0ef;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.member {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  padding: 25px;
+  transition: all 0.4s ease;
+}
+
+.member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+.member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
+}
+
+.member h4 {
+  color: #fff;
+  margin: 8px 0 3px;
+}
+
+.member .role {
+  color: #0ef;
+  font-size: 14px;
+}
+
+.member .bio {
+  color: #bbb;
+  font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .team-hero h1 {
+    font-size: 32px;
+  }
+
+  .owner-card img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+/* === Join Us Section === */
+.join {
+  padding: 80px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(0, 255, 174, 0.08), transparent),
+              linear-gradient(160deg, rgba(10, 25, 35, 0.9), rgba(10, 25, 35, 0.9),);
+  backdrop-filter: blur(14px);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.join-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(20, 40, 50, 0.6);
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(0, 255, 174, 0.1), 0 0 60px rgba(0, 255, 174, 0.05);
+  padding: 45px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: floatUp 1.4s ease;
+  backdrop-filter: blur(20px);
+}
+
+.join-card h2 {
+  font-size: 32px;
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.join-card .lead {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.apply-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  animation: fadeInUp 1.2s ease;
+}
+
+.apply-form input,
+.apply-form select,
+.apply-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.apply-form input:focus,
+.apply-form select:focus,
+.apply-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 255, 174, 0.4);
+}
+
+.apply-form select {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px; /* More rounded corners */
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+
+  /* Custom arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* When focused */
+.apply-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 255, 174, 0.45);
+  background: rgba(255,255,255,0.12);
+}
+
+/* Dropdown list (WebKit browsers) */
+.apply-form select::-webkit-scrollbar {
+  width: 8px;
+}
+.apply-form select option {
+  background-color: #0d1b22;
+  border: none;
+  padding: 12px;
+  border-radius: 8px; /* slightly rounded inside options */
+}
+
+/* Try to smooth dropdown corners (for WebKit browsers) */
+select {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Focus effect */
+.apply-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 255, 174, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown option styling */
+.apply-form select option {
+  background-color: #0f2027;   /* dropdown background */
+  color: #fff;                 /* option text color */
+  padding: 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* When an option is hovered */
+.apply-form select option:hover {
+  background-color: var(--accent);
+  color: #000;
+}
+
+/* Optional: custom arrow icon */
+.apply-form select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+/* Smooth Rounded & Clean Dropdown Look */
+.apply-form select {
+  border-radius: 10px; /* previously var(--radius), now more rounded */
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Dropdown list box when opened */
+.apply-form select option {
+  background: #0d1b22;          /* dark matching theme */
+  padding: 12px;
+  border: none;
+}
+
+/* Make dropdown edges rounded too */
+.apply-form select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 255, 174, 0.45);
+  background: rgba(255,255,255,0.12);
+  border-radius: 10px;
+}
+
+/* Add hover effect inside dropdown */
+.apply-form select option:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Add a softer arrow */
+.apply-form select {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat; /* <-- fix */
+  background-position: right 14px center;
+  background-size: 16px; /* <-- fix */
+  padding-right: 38px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+.apply-form .form-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.apply-form .btn {
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  color: #000;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.apply-form .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 255, 174, 0.3);
+}
+
+.apply-form .btn.ghost {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.apply-form .btn.ghost:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* === Contact Section === */
+contact {
+  padding: 80px 20px;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(0, 255, 174, 0.08), transparent),
+              linear-gradient(160deg, rgba(10, 25, 35, 0.9), rgba(20, 40, 50, 0.9));
+  backdrop-filter: blur(14px);
+  animation: fadeIn 1.5s ease forwards;
+}
+
+/* === Contact Card === */
+.contact-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(20, 40, 50, 0.6);
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(0, 255, 174, 0.1), 0 0 60px rgba(0, 255, 174, 0.05);
+  padding: 45px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: floatUp 1.4s ease;
+  backdrop-filter: blur(20px);
+}
+
+/* === Heading & Text === */
+.contact-card h2 {
+  font-size: 34px;
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+.contact-card .lead {
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+/* === Form === */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-form label {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 255, 174, 0.4);
+}
+
+.contact-form .btn {
+  margin-top: 10px;
+  align-self: center;
+  padding: 12px 32px;
+  background: linear-gradient(90deg, var(--accent), #00b4ff);
+  border: none;
+  border-radius: var(--radius);
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-form .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 255, 174, 0.3);
+}
+
+/* === Responsive Layout Fix (Mobile + Tablet Friendly) === */
+
+/* 🟢 মোবাইল (max-width: 600px) */
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .site-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 12px 5%;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .nav a {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 14px;
+    display: inline-block;
+  }
+
+  .home-hero {
+    grid-template-columns: 1fr;
+    padding: 150px 16px;
+    text-align: center;
+  }
+
+  .hero-visual img {
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .join-card,
+  .contact-card {
+    width: 100%;
+    max-width: 95%;
+    padding: 30px 20px;
+    margin: 0 auto;
+  }
+
+  .join h2,
+  .contact-card h2 {
+    font-size: 26px;
+  }
+
+  .apply-form .btn,
+  .contact-form .btn {
+    width: 100%;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .member img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* 🟡 ট্যাবলেট (min-width: 601px and max-width: 992px) */
+@media (min-width: 601px) and (max-width: 992px) {
+  .home-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 40px 30px;
+  }
+
+  .join-card,
+  .contact-card {
+    max-width: 80%;
+    padding: 35px 25px;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .nav a {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+}
+
+/* 🖥️ বড় স্ক্রিন (Desktop Enhancement) */
+@media (min-width: 993px) {
+  .home-hero {
+    max-width: 1100px;
+  }
+
+  .join-card,
+  .contact-card {
+    max-width: 650px;
+  }
+}
+
+/* === Footer (Always bottom center) === */
+.center-footer {
+  position: fixed;           /* স্ক্রিনে সবসময় থাকবে */
+  bottom: 0;                 /* একদম নিচে বসাবে */
+  left: 50%;                 /* মাঝখানে নিয়ে যাবে */
+  transform: translateX(-50%); /* একদম নিখুঁত center alignment */
+  width: 100%;
+  max-width: 100%;
+  padding: 14px 0;
+  text-align: center;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  z-index: 999;
+}
+
+/* Responsive view এ যেন টেক্সট overlap না করে */
+body {
+  padding-bottom: 60px; /* Footer height এর জায়গা রাখে */
+}
+
+/* === ✅ FIXED: Join Us & Contact Size & Spacing === */
+.join-card,
+.contact-card {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+contact, .contact-section {
+  display: block;
+  margin-top: 80px;
+  padding-top: 40px;
+}
+@media (max-width: 600px) {
+  .join,
+  contact,
+  .contact-section {
+    padding: 60px 20px;
+    margin-top: 40px;
+  }
+  .join-card,
+  .contact-card {
+    max-width: 95%;
+    width: 100%;
+    margin: 0 auto 60px;
+    padding: 30px 20px;
+  }
+  .site-header { margin-bottom: 20px; }
+  contact, .contact-section { margin-top: 80px; }
+}
+@media (min-width: 601px) and (max-width: 992px) {
+  .join-card,
+  .contact-card {
+    max-width: 80%;
+    margin: 60px auto;
+  }
+  contact, .contact-section { margin-top: 90px; }
+}
+/* === 🔧 FIX: Navbar & Section Gap Balancing === */
+
+/* সব পেজে navbar এর নিচে সমান gap রাখো */
+main, .join, contact, .contact-section {
+  margin-top: 100px !important;
+}
+
+/* Navbar এ consistent shadow ও background fix */
+.site-header {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Join Us এবং Contact card spacing সমান করা */
+.join-card, .contact-card {
+  margin: 80px auto !important;
+  padding: 40px 30px;
+}
+
+/* মোবাইল responsive fix */
+@media (max-width: 600px) {
+  main, .join, contact, .contact-section {
+    margin-top: 80px !important;
+  }
+  .join-card, .contact-card {
+    margin: 60px auto !important;
+    padding: 30px 20px;
+  }
+}
+
+/* Desktop view এ gap balance রাখে */
+@media (min-width: 993px) {
+  main, .join, contact, .contact-section {
+    margin-top: 110px !important;
+  }
+}
+/* === 🌍 UNIVERSAL RESPONSIVE FIX (All Devices) === */
+
+/* Consistent Navbar Style for All Pages */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 8%;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Equal top spacing for all main sections (below navbar) */
+main, .home-hero, .join, contact, .contact-section, .team-hero, .owner-section {
+  margin-top: 100px !important;
+}
+
+/* Join & Contact cards spacing fix */
+.join-card, .contact-card {
+  margin: 80px auto !important;
+  padding: 40px 30px;
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+
+/* Fix footer overlap issue */
+body {
+  padding-bottom: 70px; /* Footer height space */
+  overflow-x: hidden;
+}
+
+/* === 📱 Mobile (max 600px) === */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+    padding: 12px 6%;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  main, .home-hero, .join, contact, .contact-section {
+    margin-top: 80px !important;
+  }
+
+  .join-card, .contact-card {
+    margin: 50px auto !important;
+    padding: 28px 18px;
+    width: 95%;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .member img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* === 💻 Tablet (601px–992px) === */
+@media (min-width: 601px) and (max-width: 992px) {
+  main, .join, contact, .contact-section {
+    margin-top: 90px !important;
+  }
+
+  .join-card, .contact-card {
+    max-width: 85%;
+    margin: 60px auto !important;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* === 🖥️ Desktop (min 993px) === */
+@media (min-width: 993px) {
+  main, .join, contact, .contact-section {
+    margin-top: 110px !important;
+  }
+
+  .join-card, .contact-card {
+    max-width: 650px;
+    margin: 80px auto !important;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+  }
+
+/* === ✅ FINAL NAVBAR FIX (All devices & desktop mode) === */
+.site-header {
+  display: flex;
+  justify-content: center; /* সবসময় মাঝখানে রাখবে */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 14px 5%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--accent);
+  margin-right: auto; /* বামে রাখবে */
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.nav a:hover,
+.nav a.active {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* === Responsive Fix === */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .logo {
+    margin: 0;
+  }
+}
+
